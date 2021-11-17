@@ -9,6 +9,7 @@ import { HeroService } from "../hero.service";
 })
 export class DashboardComponent implements OnInit {
 
+  //heroesはHero型（idとnameを持つ）の配列で空
   heroes: Hero[] = []; 
 
   constructor(private heroService: HeroService) { }
@@ -18,6 +19,7 @@ export class DashboardComponent implements OnInit {
   }
 
   getHeroes(): void {
+    // hero.service.tsで定義したgetHeroes()
     this.heroService.getHeroes().subscribe(heroes => this.heroes = heroes.slice(1, 5));
   }
 

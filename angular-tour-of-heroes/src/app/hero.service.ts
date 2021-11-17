@@ -12,7 +12,10 @@ export class HeroService {
   constructor(private messageService: MessageService) { }
 
   getHeroes(): Observable<Hero[]> {
+
+    // HEROESを同期的に提供するObservableインスタンスを返す
     const heroes = of(HEROES);
+
     this.messageService.add("HeroService: fetched heroes");
     return heroes;
   }
