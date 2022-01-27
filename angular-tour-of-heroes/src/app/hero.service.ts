@@ -20,7 +20,7 @@ export class HeroService {
     this.messageService.add(`HeroService: ${message}`);
   }
 
-  private heroesUrl = "api/heroes";
+  private heroesUrl = "https://d3gj6mtti1rrpa.cloudfront.net/api/heroes";
 
   getHeroes(): Observable<Hero[]> {
 
