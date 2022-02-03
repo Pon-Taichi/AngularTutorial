@@ -20,7 +20,8 @@ export class HeroService {
     this.messageService.add(`HeroService: ${message}`);
   }
 
-  private heroesUrl = "https://d3gj6mtti1rrpa.cloudfront.net/api/heroes";
+  // private heroesUrl = "https://d3gj6mtti1rrpa.cloudfront.net/api/heroes";
+  private heroesUrl = "http://localhost:3000/api/heroes";
 
   getHeroes(): Observable<Hero[]> {
 
@@ -28,7 +29,7 @@ export class HeroService {
 
     // const heroes = of(HEROES);
     // return heroes;
-
+    console.log(this.heroesUrl);
     return this.http.get<Hero[]>(this.heroesUrl).pipe(
       tap(heroes => this.log("fetched heroes")),
       catchError(this.handleError<Hero[]>("getHeroes", []))

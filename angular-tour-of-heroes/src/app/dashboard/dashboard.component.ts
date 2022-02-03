@@ -20,7 +20,10 @@ export class DashboardComponent implements OnInit {
 
   getHeroes(): void {
     // hero.service.tsで定義したgetHeroes()
-    this.heroService.getHeroes().subscribe(heroes => this.heroes = heroes.slice(1, 5));
+    this.heroService.getHeroes().subscribe(heroes => {
+      console.log(JSON.stringify(heroes));
+      this.heroes = heroes.slice(0, 5);
+    });
   }
 
 }
