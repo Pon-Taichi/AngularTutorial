@@ -20,8 +20,9 @@ export class HeroService {
     this.messageService.add(`HeroService: ${message}`);
   }
 
-  private heroesUrl = "https://d3gj6mtti1rrpa.cloudfront.net/api/heroes";
+  // private heroesUrl = "https://d3gj6mtti1rrpa.cloudfront.net/api/heroes";
   // private heroesUrl = "http://localhost:3000/api/heroes";
+  private heroesUrl = "https://localhost:7225/api/heroes";
 
   getHeroes(): Observable<Hero[]> {
 
@@ -57,7 +58,8 @@ export class HeroService {
   }
 
   updateHero(hero: Hero): Observable<any> {
-    return this.http.put(this.heroesUrl, hero, this.httpOptions).pipe(
+    const url = `${this.heroesUrl}/${hero.id}`;
+    return this.http.put(url, hero, this.httpOptions).pipe(
       tap(_ => this.log(`updated hero id=${hero.id}`)),
       catchError(this.handleError<any>("updateHero"))
     );
